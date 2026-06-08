@@ -98,8 +98,14 @@ socket.on("location-update", (data) => {
     markers[id].setIcon(pinIcon);
     markers[id].setPopupContent(popupContent);
   } else {
-    markers[id] = L.marker([adjustedLat, adjustedLng], { icon: pinIcon }).addTo(map)
+    const marker = L.marker([adjustedLat, adjustedLng], { icon: pinIcon }).addTo(map)
       .bindPopup(popupContent);
+      
+    marker.on("click", (e) => {
+      map.setView(e.target.getLatLng(), 19);
+    });
+    
+    markers[id] = marker;
   }
 });
 
