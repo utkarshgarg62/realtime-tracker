@@ -11,8 +11,8 @@ if ("geolocation" in navigator) {
       console.error("Error getting location:", error.message);
     },
     {
-      // enableHighAccuracy: true,
-      timeout: 3000,
+      enableHighAccuracy: true,
+      timeout: 5000,
       maximumAge: 0
     }
   );
@@ -20,7 +20,7 @@ if ("geolocation" in navigator) {
   console.log("Geolocation is not supported by this browser.");
 }
 
-const map = L.map("map").setView([0, 0], 16);
+const map = L.map("map").setView([0, 0], 26);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
 }).addTo(map);
